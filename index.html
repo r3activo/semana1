@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            background-color: aqua;
+            border: solid 1px black;
+            border-radius: 20px;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        .result{
+            height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>SEMANA 1</h1>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 0</b></td>
+                <td><button onclick="ejercicio0();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let lista = new Array(9,5,12,32,1,4,6);
+    lista.sort(function(a,b){
+        return a - b;
+    })
+document.getElementById("result0").innerHTML = lista;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result0"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 1</b></td>
+                <td><button onclick="ejercicio1();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre><code>
+let Cliente = function(nombre,direccion,telefono,dni){
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.dni = dni;
+    }
+    let Elemento = function(descripcion,precio,cantidad){
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+
+    }
+    let Factura = function(empresa,direccion,telefono,nif,f_pago,elementos){
+        this.empresa = empresa;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.nif = nif;
+        this.total = 0;
+        this.t_iva = 0;
+        this.f_pago = f_pago;
+        this.elementos = elementos;
+        this.calcularTotal = function(){
+            var fin = this.elementos.length;
+            for(let i = 0; i < fin; i++){
+                this.total += parseFloat(this.elementos[i]['precio']) * parseFloat(this.elementos[i]['cantidad']);
+            }
+            this.calcularIva();
+        }
+        this.calcularIva = function(){
+            this.t_iva = ( this.total / 100 ) * 21;
+        }
+    }
+    let elemento1 = new Elemento('pelota',20,5);
+    let elemento2 = new Elemento('bicicleta',100,2);
+    let listaElementos = new Array(elemento1,elemento2);
+    let cliente1 = new Cliente('maria','av. los ovnis','123456789');
+    let factura1 = new Factura('taxis sa','av. el sol','987654321','e1','43536457',listaElementos);
+    factura1.calcularTotal();
+document.getElementById("result1").innerHTML = factura1.total;
+</code></pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result1"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 2</b></td>
+                <td><button onclick="ejercicio2();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+var nombres = new Array('ana','pedro','maria','jose');
+    let fin = 3;
+    for (let i = 0; i < fin; i++) {
+        nombres.push('nombre'+i);
+    }
+    console.log(nombres);
+    document.getElementById("result2").innerHTML = 'ver consola';
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result2"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 3</b></td>
+                <td><button onclick="ejercicio3();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let CalcularValorFuturo = function(valor,tasa,periodo){
+        return valor * Math.pow(1 + tasa/100,periodo)
+    }
+
+    let v_futuro = CalcularValorFuturo(100,10,20);
+    document.getElementById("result3").innerHTML = v_futuro;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result3"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 4</b></td>
+                <td><button onclick="ejercicio4();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+const meses = Array('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre');
+    var fin = meses.length;
+    let html = '';
+    for(let i = 0; i < fin; i++){
+        html += meses[i] +'<br>';
+    }
+    document.getElementById("result4").innerHTML = html;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result4"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 5</b></td>
+                <td><button onclick="ejercicio5();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let Circulo = function(radio){
+        this.radio = radio;
+        this.area = 0;
+        this.calcularArea = function(){
+            this.area = Math.PI * Math.pow(this.radio,2);
+        }
+    }
+    let circulo1 = new Circulo(100);
+    let circulo2 = new Circulo(200);
+    circulo1.calcularArea();
+    document.getElementById("result5").innerHTML =  circulo1.area;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result5"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 6</b></td>
+                <td><button onclick="ejercicio6();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let Celular = function(){
+        this.contactos = new Object();
+        this.agregarContacto = function(numero,nombre){
+            this.contactos[numero] = nombre;
+        }
+        this.llamadaEntrante = function(numero){
+            return 'El contacto: '+ this.contactos[numero] +' ('+ numero +') esta llamando.';
+        }
+    }
+
+    let celular1 = new Celular();
+    celular1.agregarContacto('1','ana');
+    celular1.agregarContacto('2','pedro');
+    celular1.agregarContacto('3','juan');
+    let aviso = celular1.llamadaEntrante('1');
+    document.getElementById("result6").innerHTML =  aviso;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result6"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 7</b></td>
+                <td><button onclick="ejercicio7();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let calcularMasaCorporal = function(peso,altura){
+        return peso / altura;
+    }
+
+    let masa = calcularMasaCorporal(100,1.80);
+    document.getElementById("result7").innerHTML =  masa;
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result7"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 8</b></td>
+                <td><button onclick="ejercicio8();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let DetectarIdioma = function (){
+        this.idiomas = [
+            { idioma: "Español",texto: "Bienvenido al curso de React Native en PachaQtec",id_idioma: 1,},
+            { idioma: "Ingles",texto: "Welcome to the React Native course at PachaQtec",id_idioma: 2,},
+            { idioma: "Francés",texto: "Bienvenue dans le cours React Native chez PachaQtec",id_idioma: 3,},
+            { idioma: "Italiano",texto: "Benvenuti al corso React Native presso PachaQtec",id_idioma: 4,},
+            { idioma: "Portugués",texto: "Bem-vindo ao curso React Native na PachaQtec",id_idioma: 5,}
+        ];
+        this.texto = '';
+        this.idioma = '';
+        this.id_idioma = 0;
+        this.posiblesIdiomas = new Array();
+        this.detectarIdioma = function(texto){
+            this.texto = texto;
+            let fin = this.idiomas.length;
+            for(let i = 0; i < fin; i++){
+                if( this.idiomas[i]['texto'].indexOf(this.texto) != -1 ){
+                    this.posiblesIdiomas.push( {idioma:this.idiomas[i]['idioma'],id_idioma:this.idiomas[i]['id_idioma']} );
+                }
+            }
+        }
+    }
+
+    detectar = new DetectarIdioma();
+    detectar.detectarIdioma('Bienvenido');
+    document.getElementById("result8").innerHTML = 'ver consola';
+    console.log(detectar.posiblesIdiomas);
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result8"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td><b>Ejercicio 9</b></td>
+                <td><button onclick="ejercicio9();">ejecutar</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Codigo:</b>
+                    <pre>
+let numero = Array(3,4,5,2,3,5,6);
+    let fin = numero.length;
+    let totales = { pares: 0, impares: 0 };
+    let residuo = 0;
+    for(let i = 0; i < fin; i++){
+        residuo = numero[i]/2;
+        if( Number.isInteger(residuo) ){
+            totales['pares'] += numero[i];
+        } else {
+            totales['impares'] += numero[i];
+        }
+    }
+    document.getElementById("result9").innerHTML = 'ver consola';
+    console.log(totales);
+                    </pre>
+                </td>
+                <td class="result">
+                    <b>Resultado:</b>
+                    <pre id="result9"></pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+<script>
+
+function ejercicio0(){
+    let lista = new Array(9,5,12,32,1,4,6);
+    lista.sort(function(a,b){
+        return a - b;
+    })
+    document.getElementById("result0").innerHTML = lista;
+}
+
+function ejercicio1(){
+    let Cliente = function(nombre,direccion,telefono,dni){
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.dni = dni;
+    }
+    let Elemento = function(descripcion,precio,cantidad){
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+
+    }
+    let Factura = function(empresa,direccion,telefono,nif,f_pago,elementos){
+        this.empresa = empresa;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.nif = nif;
+        this.total = 0;
+        this.t_iva = 0;
+        this.f_pago = f_pago;
+        this.elementos = elementos;
+        this.calcularTotal = function(){
+            var fin = this.elementos.length;
+            for(let i = 0; i < fin; i++){
+                this.total += parseFloat(this.elementos[i]['precio']) * parseFloat(this.elementos[i]['cantidad']);
+            }
+            this.calcularIva();
+        }
+        this.calcularIva = function(){
+            this.t_iva = ( this.total / 100 ) * 21;
+        }
+    }
+    let elemento1 = new Elemento('pelota',20,5);
+    let elemento2 = new Elemento('bicicleta',100,2);
+    let listaElementos = new Array(elemento1,elemento2);
+    let cliente1 = new Cliente('maria','av. los ovnis','123456789');
+    let factura1 = new Factura('taxis sa','av. el sol','987654321','e1','43536457',listaElementos);
+    factura1.calcularTotal();
+    document.getElementById("result1").innerHTML = factura1.total;
+}
+
+function ejercicio2(){
+    var nombres = new Array('ana','pedro','maria','jose');
+    let fin = 3;
+    for (let i = 0; i < fin; i++) {
+        nombres.push('nombre'+i);
+    }
+    document.getElementById("result2").innerHTML = JSON.stringify(nombres);
+}
+
+function ejercicio3(){
+    let CalcularValorFuturo = function(valor,tasa,periodo){
+        return valor * Math.pow(1 + tasa/100,periodo)
+    }
+
+    let v_futuro = CalcularValorFuturo(100,10,20);
+    document.getElementById("result3").innerHTML = v_futuro;
+}
+function ejercicio4(){
+    const meses = Array('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre');
+    var fin = meses.length;
+    let html = '';
+    for(let i = 0; i < fin; i++){
+        html += meses[i] +'<br>';
+    }
+    document.getElementById("result4").innerHTML = html;
+}
+function ejercicio5(){
+    let Circulo = function(radio){
+        this.radio = radio;
+        this.area = 0;
+        this.calcularArea = function(){
+            this.area = Math.PI * Math.pow(this.radio,2);
+        }
+    }
+    let circulo1 = new Circulo(100);
+    let circulo2 = new Circulo(200);
+    circulo1.calcularArea();
+    document.getElementById("result5").innerHTML =  circulo1.area;
+}
+function ejercicio6(){
+    let Celular = function(){
+        this.contactos = new Object();
+        this.agregarContacto = function(numero,nombre){
+            this.contactos[numero] = nombre;
+        }
+        this.llamadaEntrante = function(numero){
+            return 'El contacto: '+ this.contactos[numero] +' ('+ numero +') esta llamando.';
+        }
+    }
+
+    let celular1 = new Celular();
+    celular1.agregarContacto('1','ana');
+    celular1.agregarContacto('2','pedro');
+    celular1.agregarContacto('3','juan');
+    let aviso = celular1.llamadaEntrante('1');
+    document.getElementById("result6").innerHTML =  aviso;
+}
+function ejercicio7(){
+    let calcularMasaCorporal = function(peso,altura){
+        return peso / altura;
+    }
+
+    let masa = calcularMasaCorporal(100,1.80);
+    document.getElementById("result7").innerHTML =  masa;
+}
+function ejercicio8(){
+    let DetectarIdioma = function (){
+        this.idiomas = [
+            { idioma: "Español",texto: "Bienvenido al curso de React Native en PachaQtec",id_idioma: 1,},
+            { idioma: "Ingles",texto: "Welcome to the React Native course at PachaQtec",id_idioma: 2,},
+            { idioma: "Francés",texto: "Bienvenue dans le cours React Native chez PachaQtec",id_idioma: 3,},
+            { idioma: "Italiano",texto: "Benvenuti al corso React Native presso PachaQtec",id_idioma: 4,},
+            { idioma: "Portugués",texto: "Bem-vindo ao curso React Native na PachaQtec",id_idioma: 5,}
+        ];
+        this.texto = '';
+        this.idioma = '';
+        this.id_idioma = 0;
+        this.posiblesIdiomas = new Array();
+        this.detectarIdioma = function(texto){
+            this.texto = texto;
+            let fin = this.idiomas.length;
+            for(let i = 0; i < fin; i++){
+                if( this.idiomas[i]['texto'].indexOf(this.texto) != -1 ){
+                    this.posiblesIdiomas.push( {idioma:this.idiomas[i]['idioma'],id_idioma:this.idiomas[i]['id_idioma']} );
+                }
+            }
+        }
+    }
+
+    detectar = new DetectarIdioma();
+    detectar.detectarIdioma('Bienvenido');
+    document.getElementById("result8").innerHTML = JSON.stringify(detectar.posiblesIdiomas);
+}
+function ejercicio9(){
+    let numero = Array(3,4,5,2,3,5,6);
+    let fin = numero.length;
+    let totales = { pares: 0, impares: 0 };
+    let residuo = 0;
+    for(let i = 0; i < fin; i++){
+        residuo = numero[i]/2;
+        if( Number.isInteger(residuo) ){
+            totales['pares'] += numero[i];
+        } else {
+            totales['impares'] += numero[i];
+        }
+    }
+    document.getElementById("result9").innerHTML = JSON.stringify(totales);
+}
+</script>
+</body>
+</html>
